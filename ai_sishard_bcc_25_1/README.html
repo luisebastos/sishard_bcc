@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>AI SisHard BCC 25-1</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">AI SisHard BCC 25-1</h1>
+</header>
+<h1 id="prova-sistemas-hardware-software">Prova Sistemas Hardware Software</h1>
+<!-- markdown_py README.md > README.html -->
+<!-- pandoc README.md -f markdown -t html -s -o README.html --metadata title="AI SisHard BCC 25-1" -->
+<h3 id="duração-120-minutos">Duração: 120 minutos</h3>
+<h3 id="questões">3 Questões</h3>
+<p><strong>ATENÇÃO:</strong> O SMOWL estará com tempo superior a 120 minutos, desconsidere.</p>
+<ul>
+<li>Em cada questão é indicado um arquivo para colocar sua resposta.</li>
+<li>É permitido consultar o material da disciplina durante a prova (repositório da disciplina e seu repositório de atividades), além de seus materiais físicos. <strong>Ficam proibidas consultas a materiais de outros alunos</strong></li>
+<li>Pesquisas no <strong>Google</strong> para consultar o manual de assembly são aceitas; pesquise algo como “nome do comando” assembly x86.</li>
+<li>Fica proibido o uso de ferramentas de IA ou auto-complete</li>
+<li>A prova é individual. Qualquer consulta a outras pessoas durante a prova constitui violação ao Código de Ética do Insper. Não abra E-mail, Whatsapp, Discord, etc.</li>
+<li>A prova deve ser um exercício intelectual seu. Fica proibido utilizar programas ou qualquer outra ferramenta que resolva para você os exercícios (engenharia reversa).</li>
+<li>Fica proibido o uso de ferramentas de geração de código como o copilot. Sujeito a código de ética.</li>
+<li>Para conversões de base, pode utilizar a calculadora do Ubuntu.</li>
+</ul>
+<h2 id="instalação">Instalação</h2>
+<p>Se receber reclamações como <code>cannot find -lsystemd</code>, instale com:</p>
+<p><code>sudo apt update</code></p>
+<p><code>sudo apt install build-essential libsystemd-dev</code></p>
+<h2 id="questão-01">Questão 01</h2>
+<p>Se não conseguir rodar o executável <code>./q1</code>, execute o comando:</p>
+<p><code>chmod +x q1</code></p>
+<p>Neste exercício, você deve responder <code>V</code> ou <code>F</code> para as afirmações retornadas.</p>
+<p>Passe suas respostas para o arquivo <code>solucao.txt</code>, uma resposta em cada linha (deixe uma linha em branco no final) e execute com</p>
+<p>./q1 &lt; solucao.txt</p>
+<p><strong>Onde deixo minhas respostas?</strong>: no arquivo <code>solucao.txt</code>. Uma resposta em cada linha, com uma linha em branco no final!</p>
+<p><strong>Critérios de avaliação</strong>: sua nota será a proporção de respostas <strong>corretas</strong> (por motivos óbvios, correção posterior a prova)</p>
+<p><strong>Pontos possíveis</strong>: 2,0</p>
+<h2 id="questão-02">Questão 02</h2>
+<p>Se não conseguir rodar o executável <code>./q2</code>, execute o comando:</p>
+<p><code>chmod +x q2</code></p>
+<p>Este exercício é um mini <strong>HackerLab</strong>. Utilize seus conhecimentos adquiridos para descobrir a senha de cada nível!</p>
+<p>Coloque as respostas no arquivo <code>solucao.txt</code> e rode</p>
+<blockquote>
+<p><code>./q2 &lt; solucao.txt</code></p>
+</blockquote>
+<p><strong>Preciso fazer engenharia reversa?</strong> Você vai precisar analisar o assembly para entender as operações envolvidas, mas não precisa entregar esta tradução. Sua entrega deve ser apenas as entradas no arquivo <code>solucao.txt</code>.</p>
+<p><strong>Onde deixo minhas respostas?</strong>: no arquivo <code>solucao.txt</code></p>
+<p><strong>Critérios de avaliação</strong>: A nota será disponibilizada na saída padrão!</p>
+<p><strong>Pontos possíveis</strong>: 4,0</p>
+<h2 id="questão-3">Questão 3</h2>
+<p>Faça engenharia reversa da função <code>funcao1</code> contida em <code>q3.o</code>.</p>
+<p>Coloque sua solução no arquivo <code>solucao.c</code>, chamando sua função de <code>funcao1_solucao</code>.</p>
+<p>Para compilar os testes e sua solução use</p>
+<blockquote>
+<p><code>gcc -Og -g -fno-stack-protector solucao.c q3.o -lsystemd -lm -o q3</code></p>
+</blockquote>
+<p>Este exercício possui testes automáticos para servir como auxílio.</p>
+<p>Execute os testes automáticos com: &gt; <code>./q3</code></p>
+<p>Observe, nos critérios de avaliação, que acertar o cabeçalho da função e fazer uma versão legível do código também fazem parte da nota. Também escreva uma explicação breve e direta (uma frase ou linha) do que a função <code>funcao1</code> faz, no arquivo <code>explicacao.md</code>.</p>
+<p><strong>Critérios de avaliação</strong>:</p>
+<ul>
+<li>50% - pela proporção de testes com PASS (sem truques para burlá-los)</li>
+<li>20% - acertar os tipos das chamadas de função</li>
+<li>20% - código legível (e correto), sem construções estranhas (entregue a melhor versão do seu exercício, se fez if-goto e depois C legível, entregue apenas C legível!)</li>
+<li>10% - explicação do que a função faz</li>
+</ul>
+<p><strong>OBS</strong>:</p>
+<ul>
+<li>Os testes não são exaustivos. Você pode passar em todos e sua função ainda não estar completamente correta. Neste caso, a nota com “proporção de testes com PASS” ficará completa, mas as demais poderão sofrer desconto.</li>
+</ul>
+<p><strong>Pontos possíveis</strong>: 4,0</p>
+</body>
+</html>
