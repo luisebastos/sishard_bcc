@@ -12,7 +12,7 @@
 
 char *read_word(int fd);
 
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex_fd = PTHREAD_MUTEX_INITIALIZER;
 
 typedef struct
 {
@@ -92,7 +92,7 @@ void *cpf_validation_thread(void *_arg)
         // Tenta ler uma palavra do arquivo
         char *palavra = NULL; 
         pthread_mutex_lock(&mutex_fd); 
-        palavara = read_word(arg->file_desc);
+        palavra = read_word(arg->file_desc);
         pthread_mutex_unlock(&mutex_fd);
 
         if (palavra == NULL)

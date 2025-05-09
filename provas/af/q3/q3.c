@@ -42,8 +42,19 @@ int baixa_imagens(int qtde_imagens)
 // ULTIMA_IMAGEM=15
 //
 // Esta função deve ser chamada pelo handler quando este for acionado
+void ultima_imagem(){
+    char buf[64];
+    int fd1 = open("q3_status.txt", O_WRONLY | O_CREAT | O_TRUNC, 0700);
+    int len = snprintf(buf, sizeof(buf), "%f\n", pi);
+    write(fd1, buf, len);
+    close(fd1);
+}
 
 // Crie AQUI a função que será o handler do sinal
+void sig_handler(int num){
+    ultima_imagem();
+    exit(0);
+}
 
 int main(int argc, char *argv[])
 {
@@ -57,6 +68,14 @@ int main(int argc, char *argv[])
     printf("Meu pid: %d\n", getpid());
 
     // Registre AQUI seu handler para os sinais SIGINT e SIGTERM!
+    struct sigaction s;
+    s.sa_handler = sig_handler;
+    sigemptyset(&s.sa_mask);
+    s.sa_flags = 0;
+
+    sigaction(SIGINT, &s, NULL);
+
+    srand(time(NULL));
 
     baixa_imagens(atol(argv[1]));
 
