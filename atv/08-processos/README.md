@@ -22,7 +22,7 @@ Então você deve:
 Cada processo filho deve:
 - Esperar `5` segundos antes de iniciar a busca (apenas os filhos esperam, o pai não!)
 - Iniciar a busca na parte do array atribuida a ele
-- Retorne adequadamente `-1` ou o índice onde foi encontrado o número
+- Retorne adequadamente ` -1` ou o índice onde foi encontrado o número
 
 Restrições:
 - Considere que o tamanho da região `r` será de no mínimo 1 e no máximo 200
