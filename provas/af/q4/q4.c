@@ -222,5 +222,7 @@ int main(int argc, char *argv[])
     free(tids);
     free(args);
 
+    pthread_mutex_destroy(&mutex_fd); 
+
     return 0;
 }
