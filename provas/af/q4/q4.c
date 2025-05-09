@@ -12,7 +12,7 @@
 
 char *read_word(int fd);
 
-pthread_mutex_t mutex_fd = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 typedef struct
 {
@@ -90,10 +90,10 @@ void *cpf_validation_thread(void *_arg)
     while (1)
     {
         // Tenta ler uma palavra do arquivo
-        char *palavra = NULL; 
-        pthread_mutex_lock(&mutex_fd); 
+        char *palavra = read_word(arg->file_desc);; 
+        pthread_mutex_lock(&mutex); 
         palavra = read_word(arg->file_desc);
-        pthread_mutex_unlock(&mutex_fd);
+        pthread_mutex_unlock(&mutex);
 
         if (palavra == NULL)
         {
@@ -107,9 +107,9 @@ void *cpf_validation_thread(void *_arg)
         int ret = validade_cpf(palavra);
         if (ret == 0)
         {
-            pthread_mutex_lock(&mutex_fd); 
+            pthread_mutex_lock(&mutex); 
             *arg->count_cpfs = *arg->count_cpfs + 1;
-            pthread_mutex_unlock(&mutex_fd);
+            pthread_mutex_unlock(&mutex);
         }
         free(palavra);
     }
@@ -222,7 +222,7 @@ int main(int argc, char *argv[])
     free(tids);
     free(args);
 
-    pthread_mutex_destroy(&mutex_fd); 
+    pthread_mutex_destroy(&mutex); 
 
     return 0;
 }
