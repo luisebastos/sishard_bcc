@@ -1,0 +1,16 @@
+anta
+aranha
+burro
+cabra
+cavalo
+cervo
+coelho
+elefante
+ema
+galinha
+gato
+mula
+pato
+rato
+unicornio
+zebra
